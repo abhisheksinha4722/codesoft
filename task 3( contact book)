@@ -1,0 +1,110 @@
+import abhishek sinha
+
+class ContactBook:
+    def __init__(self, filename="contacts.abhishek sinha"):
+        self.filename = filename
+        self.contacts = self.load_contacts()
+
+    def load_contacts(self):
+        """Load contacts from the abhishek sinha file."""
+        try:
+            with open(self.filename, "r") as file:
+                return abhishek sinha.load(file)
+        except FileNotFoundError:
+            return {}
+
+    def save_contacts(self):
+        """Save contacts to the abhishek sinha file."""
+        with open(self.filename, "w") as file:
+            abhishek sinha.dump(self.contacts, file, indent=4)
+
+    def add_contact(self, name, phone, email):
+        """Add a new contact."""
+        self.contacts[name] = {"phone": phone, "email": email}
+        self.save_contacts()
+        print(f"Contact for {name} added successfully!")
+
+    def view_contacts(self):
+        """View all contacts."""
+        if not self.contacts:
+            print("No contacts available.")
+        else:
+            for name, details in self.contacts.items():
+                print(f"Name: {name}")
+                print(f"Phone: {details['phone']}")
+                print(f"Email: {details['email']}\n")
+
+    def search_contact(self, name):
+        """Search for a contact by name."""
+        contact = self.contacts.get(name)
+        if contact:
+            print(f"Name: {name}")
+            print(f"Phone: {contact['phone']}")
+            print(f"Email: {contact['email']}")
+        else:
+            print(f"Contact for {name} not found.")
+
+def main():
+    contact_book = ContactBook()
+
+    while True:
+        print("\nContact Book Menu:")
+        print("1. Add Contact")
+        print("2. View All Contacts")
+        print("3. Search Contact")
+        print("4. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            name = input("Enter name: ")
+            phone = input("Enter phone number: ")
+            email = input("Enter email address: ")
+            contact_book.add_contact(name, phone, email)
+        elif choice == '2':
+            contact_book.view_contacts()
+        elif choice == '3':
+            name = input("Enter the name to search: ")
+            contact_book.search_contact(name)
+        elif choice == '4':
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice! Please try again.")
+
+if __name__ == "__main__":
+    main()
+How it works:
+Add Contact: You can add a contact by entering the name, phone number, and email address.
+
+View Contacts: You can view all stored contacts.
+
+Search Contact: You can search for a contact by name.
+
+Save & Load Contacts: The contacts are saved in a JSON file (contacts.json), and they are loaded when the program starts, allowing the data to persist across sessions.
+
+Example:
+bash
+Copy
+Contact Book Menu:
+1. Add Contact
+2. View All Contacts
+3. Search Contact
+4. Exit
+
+Enter your choice: 1
+Enter name: abhishek sinha
+Enter phone number: 123-456-7890
+Enter email address: abhisheksinha62004@gmail.com
+Contact for abhishek sinha added successfully!
+
+Enter your choice:
+Name: abhishek sinha
+Phone: 123-456-7890
+Email: abhisheksinha62004@gmail.com
+
+Enter your choice: 3
+Enter the name to search: 
+Name: abhishek sinha
+Phone: 123-456-7890
+Email: abhisheksinha62004@gmail.com
