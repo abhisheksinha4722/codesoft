@@ -1,6 +1,4 @@
-# codesoft
- task 1 (to do list)
- def show_tasks(tasks):
+    def show_tasks(tasks):
     if not tasks:
         print("No tasks in the list!")
     else:
